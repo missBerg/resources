@@ -60,6 +60,10 @@ kubectl apply -f taylor/global-rate-limit.yml
 This will automatically apply to all routes on this gateway
 
 ## Taylor Blue-Green Release
+Ok so now we want to have one route that demonstrates a blue-green release.
+```
+kubectl apply -f taylor/blue-green.yml
+```
 
 # Shared Gateway
 I've created a shared gateway to be there to handle traffic from the outside to multiple namespaces.
