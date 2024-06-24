@@ -1,0 +1,22 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy 
+metadata:
+  name: taylor-rate-limit
+  namespace: taylor
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: taylor-gateway
+    namespace: taylor
+  rateLimit:
+    type: Global
+    global:
+      rules:
+      - clientSelectors:
+        - sourceCIDR: 
+            value: 0.0.0.0/0
+            type: Distinct
+        limit:
+          requests: 3
+          unit: Hour

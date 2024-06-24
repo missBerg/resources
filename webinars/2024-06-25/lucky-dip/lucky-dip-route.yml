@@ -1,0 +1,44 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: lucky-dip
+  namespace: lucky-dip
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      namespace: shared-gateway
+      name: shared-gateway
+      sectionName: demo-miss-berg
+  rules:
+    - matches:
+      - headers:
+        - type: Exact
+          name: missberg-demo-cheat-code
+          value: always-winning
+        path:
+          type: PathPrefix
+          value: /lucky-dip/
+      backendRefs:
+      - group: ""
+        kind: Service
+        namespace: lucky-dip
+        name: winner
+        port: 8080
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /lucky-dip/
+      backendRefs:
+        - group: ""
+          kind: Service
+          namespace: lucky-dip
+          name: loser
+          port: 8080
+          weight: 9
+        - group: ""
+          kind: Service
+          namespace: lucky-dip
+          name: winner
+          port: 8080
+          weight: 1
