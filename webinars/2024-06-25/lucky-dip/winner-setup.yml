@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: winner
+  namespace: lucky-dip
+  labels:
+    app: winner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: winner
+  template:
+    metadata:
+      labels:
+        app: winner
+    spec:
+      containers:
+      - name: winner
+        image: us-east1-docker.pkg.dev/envoy-gateway-demo-01/demo-images/winner:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: winner
+  namespace: lucky-dip
+  labels:
+    app: winner
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: winner

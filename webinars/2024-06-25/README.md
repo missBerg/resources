@@ -109,7 +109,15 @@ https://cert-manager.io/docs/usage/certificate/#inner-workings-diagram-for-devel
 # Lucky Dip
 I promised you'll know how to always win on lucky dip...
 
-But f
+Some general notes on the setup here:
+- A namespace called `lucky-dip`
+    - With the label `purpose=workloads` - so it can add routes to the shared-gateway
+- Two services, you can find the files to build the images in the folder `go-services` under `lucky-dip`
+    - Winner
+    - Loser
+- A route that splits traffic (similar to the Taylor route)
+- A rate limiter, based on IP, because you only get so many chances
+
 
 
 # General Helpful Resources

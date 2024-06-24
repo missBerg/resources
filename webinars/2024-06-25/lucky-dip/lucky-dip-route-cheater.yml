@@ -12,6 +12,20 @@ spec:
       sectionName: demo-miss-berg
   rules:
     - matches:
+      - headers:
+        - type: Exact
+          name: missberg-demo-cheat-code
+          value: always-winning
+        path:
+          type: Exact
+          value: /lucky-dip
+      backendRefs:
+      - group: ""
+        kind: Service
+        namespace: lucky-dip
+        name: winner
+        port: 8080
+    - matches:
         - path:
             type: Exact
             value: /lucky-dip
