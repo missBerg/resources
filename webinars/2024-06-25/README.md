@@ -91,6 +91,8 @@ Some stuff to note that I've done to set this up:
 
 ```
 helm repo add jetstack https://charts.jetstack.io
+```
+```
 helm upgrade --install --create-namespace --namespace cert-manager --set installCRDs=true --set featureGates=ExperimentalGatewayAPISupport=true cert-manager jetstack/cert-manager
 ```
 ### Check installation
@@ -98,7 +100,6 @@ helm upgrade --install --create-namespace --namespace cert-manager --set install
 ```
 kubectl wait --for=condition=Available deployment -n cert-manager --all
 ```
-
 ```
 kubectl get -n cert-manager deployment
 ```
@@ -131,9 +132,8 @@ Some general notes on the setup here:
 - Two services, you can find the files to build the images in the folder `go-services` under `lucky-dip`
     - Winner
     - Loser
-- A route that splits traffic (similar to the Taylor route)
+- A route that splits traffic (similar to the Taylor blue-green route)
 - A rate limiter, based on IP, because you only get so many chances
-
 
 
 # General Helpful Resources
