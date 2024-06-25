@@ -24,7 +24,8 @@ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example In
 #### Create a certificate and a private key for taylor.missberg.com
 ```
 openssl req -out taylor.missberg.com.csr -newkey rsa:2048 -nodes -keyout taylor.missberg.com.key -subj "/CN=taylor.missberg.com/O=example organization"
-
+```
+```
 openssl x509 -req -days 365 -CA missberg.com.crt -CAkey missberg.com.key -set_serial 0 -in taylor.missberg.com.csr -out taylor.missberg.com.crt
 ```
 
