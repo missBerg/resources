@@ -9,7 +9,7 @@ https://www.postman.com/e5r34t/workspace/webinars/collection/1269888-809916eb-13
 
 ## Create Taylor Namespace
 ```
-kubectl create namespace -n taylor
+kubectl create namespace taylor
 ```
 
 ## HTTPS with Self Signed Cert
