@@ -18,5 +18,5 @@ spec:
             value: 0.0.0.0/0
             type: Distinct
         limit:
-          requests: 100
+          requests: 10
           unit: Hour

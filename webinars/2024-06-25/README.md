@@ -123,7 +123,7 @@ https://cert-manager.io/docs/usage/certificate/#inner-workings-diagram-for-devel
 ### Step by step
 - Install Cert Manager
 - Create a ClusterIssuer
-    - Verify the issuer is created `kubectl get issuer --all-namespaces`
+    - Verify the issuer is created `kubectl get clusterissuers.cert-manager.io --all-namespaces`
 - Tell your Gateway to have certs mnanaged by the cert manager
 - Create a listener on the Gateway that has a cert
 - Check the Gateway `kubectl describe gateway/shared-gateway`
