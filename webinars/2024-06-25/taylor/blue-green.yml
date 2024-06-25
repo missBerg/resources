@@ -25,9 +25,9 @@ spec:
       kind: Service
       name: blue
       port: 8080
-      weight: 8
+      weight: 0
     - group: ""
       kind: Service
       name: green
       port: 8080
-      weight: 2
+      weight: 10

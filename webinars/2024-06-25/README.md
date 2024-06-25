@@ -72,6 +72,10 @@ kubectl apply -f taylor/blue-green.yml
 # Shared Gateway
 I've created a shared gateway to be there to handle traffic from the outside to multiple namespaces.
 
+```
+kubectl get gateway/shared-gateway -n shared-gateway
+```
+
 I've created a couple of listeners.
 
 ## Add Taylor to Shared Gateway
