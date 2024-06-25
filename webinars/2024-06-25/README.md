@@ -44,6 +44,9 @@ kubectl get gateway/taylor-gateway -n taylor
 ```
 kubectl describe gateway/taylor-gateway -n taylor
 ```
+```
+kubectl get svc -n envoy-gateway-system -l gateway.envoyproxy.io/owning-gateway-namespace=taylor
+```
 
 ## Create Taylor Blue & Green Services
 ```
