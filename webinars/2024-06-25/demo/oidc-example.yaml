@@ -1,0 +1,46 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: oidc-example
+spec:
+  oidc:
+    clientID: D8YFaa02wGBi5aIRZ37uDVTksBEwNh2L
+    clientSecret:
+      group: ""
+      kind: Secret
+      name: my-app-client-secret
+    provider:
+      authorizationEndpoint: https://dev-yh07t8i002yptwkp.us.auth0.com/authorize
+      issuer: auth0
+      tokenEndpoint: https://dev-yh07t8i002yptwkp.us.auth0.com/oauth/token
+    redirectURL: https://gateway.demo.missberg.com/myapp/oauth2/callback
+    logoutPath: "/logout"
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: myapp
+
+# ---
+
+# apiVersion: gateway.envoyproxy.io/v1alpha1
+# kind: SecurityPolicy
+# metadata:
+#   name: oidc-example
+# spec:
+#   oidc:
+#     clientID: lapVoy7H2soD3lMwadjUxXD7gCXNbk0A
+#     clientSecret:
+#       group: ""
+#       kind: Secret
+#       name: web-oidc-secret
+#     logoutPath: /logout
+#     provider:
+#       authorizationEndpoint: https://zhaohuabing.auth0.com/authorize
+#       issuer: auth0
+#       tokenEndpoint: https://zhaohuabing.auth0.com/oauth/token
+#     redirectURL: https://www.example.com/oauth2/callback
+#   targetRefs:
+#   - group: gateway.networking.k8s.io
+#     kind: HTTPRoute
+#     name: backend

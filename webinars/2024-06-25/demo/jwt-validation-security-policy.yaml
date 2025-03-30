@@ -1,0 +1,26 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: authorization-jwt-claim
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: demo-backend-protected
+  jwt:
+    providers:
+    - name: auth0-dev-demo
+      issuer: https://dev-yh07t8i002yptwkp.us.auth0.com/
+      remoteJWKS:
+        uri: https://dev-yh07t8i002yptwkp.us.auth0.com/.well-known/jwks.json
+  authorization:
+    defaultAction: Deny
+    rules:
+    - name: "allow"
+      action: Allow
+      principal:
+        jwt:
+          provider: auth0-dev-demo
+          claims:
+          - name: aud
+            values: ["https://gateway.demo.missberg.com/test/protected"]
